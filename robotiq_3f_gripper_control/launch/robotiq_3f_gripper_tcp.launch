@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gripper_ip" default="172.16.1.201"/>
+  <arg name="prefix" default="robotiq_"/>
+
+  <!-- start Robotiq 3-finger gripper driver -->
+  <node name="Robotiq3FGripperTcpNode" pkg="robotiq_3f_gripper_control" type="Robotiq3FGripperTcpNode.py" args="$(arg gripper_ip)" output="screen" />
+
+  <!-- start Robotiq 3-finger gripper state publisher for joints update -->
+  <node name="Robotiq3FGripperStatePublisher" pkg="robotiq_3f_gripper_joint_state_publisher" type="robotiq_3f_gripper_joint_states" output="screen">
+    <param name="prefix" value="$(arg prefix)" />
+  </node>
+</launch>
