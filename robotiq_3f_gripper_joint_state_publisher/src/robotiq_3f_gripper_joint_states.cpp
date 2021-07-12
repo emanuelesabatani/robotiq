@@ -182,7 +182,7 @@ int main(int argc, char *argv[]) {
   ros::init(argc, argv, "robotiq_3f_gripper_joint_states");
   ros::NodeHandle nh;
   ros::NodeHandle pnh("~");
-  ros::Rate loop_rate(20);  // Hz
+  ros::Rate loop_rate(250);  // Hz
 
   // set user-specified prefix
   std::string gripper_prefix;
@@ -193,7 +193,7 @@ int main(int argc, char *argv[]) {
 
   // joint state publisher
   ros::Publisher joint_pub;
-  joint_pub = nh.advertise<sensor_msgs::JointState>("joint_states", 10);
+  joint_pub = nh.advertise<sensor_msgs::JointState>("joint_states", 100);
 
   // robotiq state message subscriber
   ros::Subscriber joint_sub;
